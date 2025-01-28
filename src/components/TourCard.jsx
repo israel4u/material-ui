@@ -31,19 +31,19 @@ const theme = createTheme({
   },
 });
 
-function TourCard() {
+function TourCard({tour}) {
   return (
     <>
       <Grid size={3}>
         <ThemeProvider theme={theme}>
         <Paper elevation={3}>
-          <img src="https://images.pexels.com/photos/30283157/pexels-photo-30283157/free-photo-of-misty-mountain-framed-by-evergreen-trees.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" 
+          <img src={tour.image} 
           alt="Background image"
           className="imgSetting"
           />         
           <Box component="section" sx={{ px:2 }}>
             <Typography variant="subTitle2" component="h2">
-              Immerse into the Fall
+              {tour.name}
             </Typography>
           </Box>
           <Box sx={{
@@ -53,7 +53,7 @@ function TourCard() {
           }}>
             <AccessTime sx={{ width: 12.5 }} />
             <Typography variant="body2" component="p" marginLeft={0.5}>
-              5 hours
+              {tour.duration} hours
             </Typography>
           </Box>
           <Box 
@@ -65,12 +65,12 @@ function TourCard() {
             }}
             
           >
-            <Rating name="read-only" value={4.5} readOnly precision={0.5} size="small" />
+            <Rating name="read-only" value={tour.rating} readOnly precision={0.5} size="small" />
             <Typography variant="body2" component="p" marginLeft={0.5}>
-              466 
+              {tour.rating}
             </Typography>
             <Typography variant="body3" component="p" marginLeft={0.5}>
-              (655 reviews)
+              ({tour.numberOfReviews} reviews)
             </Typography>
           </Box>
           <Box 
@@ -79,7 +79,7 @@ function TourCard() {
             }}
           >
             <Typography variant="h6" component="h3" marginTop={0}>
-              From C $147
+              From C ${tour.price}
             </Typography>
           </Box>
         </Paper>
